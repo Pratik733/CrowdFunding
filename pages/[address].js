@@ -31,7 +31,7 @@ export default function Detail({Data, DonationsData}) {
         provider
       );
 
-      fetch('https://crowdfunding.infura-ipfs.io/ipfs/' + Data.storyUrl)
+      fetch('https://testcrowdfunding.infura-ipfs.io/ipfs/' + Data.storyUrl)
             .then(res => res.text()).then(data => storyData = data);
 
       const MyDonations = contract.filters.donated(Address);
@@ -77,10 +77,10 @@ export default function Detail({Data, DonationsData}) {
       <LeftContainer>
         <ImageSection>
           <Image
-            alt="crowdfunding dapp"
+            alt="testcrowdfunding dapp"
             layout="fill"
             src={
-              "https://crowdfunding.infura-ipfs.io/ipfs/" + Data.image
+              "https://testcrowdfunding.infura-ipfs.io/ipfs/" + Data.image
             }
           />
         </ImageSection>
