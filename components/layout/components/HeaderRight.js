@@ -8,13 +8,13 @@ import Wallet from './Wallet';
 
 const HeaderRight = () => {
   const ThemeToggler = useContext(App);
+  // <ThemeToggle onClick={ThemeToggler.changeTheme}>
+  // {ThemeToggler.theme === 'light' ? <DarkModeIcon /> : <Brightness7Icon />}
+  // </ThemeToggle>
 
   return (
     <HeaderRightWrapper>
       <Wallet />
-      <ThemeToggle onClick={ThemeToggler.changeTheme}>
-      {ThemeToggler.theme === 'light' ? <DarkModeIcon /> : <Brightness7Icon />}
-      </ThemeToggle>
     </HeaderRightWrapper>
   )
 }
@@ -30,7 +30,7 @@ const ThemeToggle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.bgDiv};
+  /* background-color: ${(props) => props.theme.bgDiv}; */
   height: 100%;
   padding: 5px;
   width: 45px;

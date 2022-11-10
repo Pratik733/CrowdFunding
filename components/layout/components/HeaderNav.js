@@ -24,7 +24,7 @@ const HeaderNavWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props) => props.theme.bgDiv};
+  /* background-color: ${(props) => props.theme.bgDiv}; */
   padding: 6px;
   height: 50%;
   border-radius: 10px;
@@ -37,9 +37,9 @@ const HeaderNavLinks = styled.div`
   background-color: ${(props) => props.active ? props.theme.bgSubDiv : props.theme.bgDiv };
   height: 100%;
   font-family: 'Roboto';
-  margin: 5px;
+  margin: 0px 5px 0px 5px;
   border-radius: 10px;
-  padding: 0 5px 0 5px;
+  padding: 10px 20px 10px 20px;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;

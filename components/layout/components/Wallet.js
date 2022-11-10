@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { ethers } from "ethers";
 import { useState } from "react";
 
-
 const networks = {
   polygon: {
     chainId: `0x${Number(80001).toString(16)}`,
@@ -17,11 +16,9 @@ const networks = {
   },
 };
 
-
 const Wallet = () => {
   const [address, setAddress] = useState("");
   const [balance, setBalance] = useState("");
-
 
   const connectWallet = async () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
@@ -35,20 +32,32 @@ const Wallet = () => {
           },
         ],
       });
-    } 
-      const account = provider.getSigner();
-      const Address = await account.getAddress();
-      setAddress(Address);
-      const Balance = ethers.utils.formatEther(await account.getBalance());
-      setBalance(Balance);
-    
+    }
+    const account = provider.getSigner();
+    const Address = await account.getAddress();
+    setAddress(Address);
+    const Balance = ethers.utils.formatEther(await account.getBalance());
+    setBalance(Balance);
   };
 
   return (
-    <ConnectWalletWrapper onClick={connectWallet}>
-      {balance == '' ? <Balance></Balance> : <Balance>{balance.slice(0,4)} Matic</Balance> }
-      {address == '' ? <Address>Connect Wallet</Address> : <Address>{address.slice(0,6)}...{address.slice(39)}</Address>}
-    </ConnectWalletWrapper>
+    <button
+      onClick={connectWallet}
+      className="bg-indigo-900 w-auto hover:bg-blue-900 text-white font-semibold hover:text-white py-2 px-4 border border-blue-900 hover:border-transparent rounded"
+    >
+      {balance == "" ? (
+        <Balance></Balance>
+      ) : (
+        <Balance>{balance.slice(0, 4)} Matic</Balance>
+      )}
+      {address == "" ? (
+        <Address>Connect Wallet</Address>
+      ) : (
+        <Address>
+          {address.slice(0, 6)}...{address.slice(39)}
+        </Address>
+      )}
+    </button>
   );
 };
 
@@ -62,28 +71,28 @@ const ConnectWalletWrapper = styled.div`
   color: ${(props) => props.theme.color};
   border-radius: 10px;
   margin-right: 15px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: bold;
   font-size: small;
   cursor: pointer;
 `;
 
 const Address = styled.h2`
-    background-color: ${(props) => props.theme.bgSubDiv};
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 5px 0 5px;
-    border-radius: 10px;
-`
+  /* background-color: ${(props) => props.theme.bgSubDiv}; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px 0 5px;
+  border-radius: 10px;
+`;
 
 const Balance = styled.h2`
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    margin-right: 5px;
-`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+`;
 
 export default Wallet;
